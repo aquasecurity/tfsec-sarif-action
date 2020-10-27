@@ -8,7 +8,11 @@ Example usage
 
 ```yaml
 name: tfsec
-on: [pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 jobs:
   tfsec:
     name: tfsec sarif report
@@ -21,6 +25,12 @@ jobs:
       - name: tfsec
         uses: tfsec/tfsec-sarif-action@master
         with:
+          sarif_file: tfsec.sarif         
           github_token: ${{ secrets.github_token }}
-          
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          # Path to SARIF file relative to the root of the repository
+          sarif_file: tfsec.sarif         
 ```
