@@ -3,9 +3,6 @@ description: 'Run tfsec against terraform code base and upload the sarif output 
 author: 'Owen Rumney'
 
 inputs:
-  github_token:
-    description: 'GITHUB_TOKEN'
-    required: true
   working_directory:
     description: |
       Directory to run the action on, from the repo root.
