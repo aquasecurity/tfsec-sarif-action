@@ -12,6 +12,9 @@ inputs:
     description: The path to write the sarif report, defaults to tfsec.sarif
   tfvars_file:
     description: The tfvars file to use for the scan
+  tfsec_version:
+    description: The version of tfsec to use for the scan, defaults to latest
+    default: latest
 outputs:
   tfsec-return-code:
     description: 'tfsec command return code'
