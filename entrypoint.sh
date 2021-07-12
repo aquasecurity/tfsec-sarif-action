@@ -12,7 +12,7 @@ if [ "$INPUT_TFSEC_VERSION" != "latest" ]; then
 fi
 
 # Download the required tfsec version
-wget -O - -q "$(wget -q https://api.github.com/repos/tfsec/tfsec/releases/${VERSION} -O - | grep -o -E "https://.+?tfsec-linux-amd64" | head -n1)" >tfsec
+wget -O - -q "$(wget -q https://api.github.com/repos/aquasecurity/tfsec/releases/${VERSION} -O - | grep -o -E "https://.+?tfsec-linux-amd64" | head -n1)" >tfsec
 install tfsec /usr/local/bin/tfsec
 
 if [ -n "${INPUT_TFVARS_FILE}" ]; then
