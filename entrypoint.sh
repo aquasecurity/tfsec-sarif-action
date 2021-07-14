@@ -20,9 +20,14 @@ if [ -n "${INPUT_TFVARS_FILE}" ]; then
   TFVARS_OPTION="--tfvars-file ${INPUT_TFVARS_FILE}"
 fi
 
+if [ -n "${INPUT_CONFIG_FILE}" ]; then
+  echo "::debug::Using config file ${INPUT_CONFIG_FILE}"
+  CONFIG_FILE_OPTION="--config-file ${INPUT_CONFIG_FILE}"
+fi
+
 echo {} >${INPUT_SARIF_FILE}
 
-tfsec --format=sarif "${INPUT_WORKING_DIRECTORY}" ${TFVARS_OPTION} >${INPUT_SARIF_FILE}
+tfsec --format=sarif "${INPUT_WORKING_DIRECTORY}" ${CONFIG_FILE_OPTION} ${TFVARS_OPTION} >${INPUT_SARIF_FILE}
 
 tfsec_return="${PIPESTATUS[0]}" exit_code=$?
 
