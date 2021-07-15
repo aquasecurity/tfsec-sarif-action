@@ -26,7 +26,7 @@ jobs:
       - name: tfsec
         uses: tfsec/tfsec-sarif-action@master
         with:
-          sarif_file: tfsec.sarif         
+          sarif_file: tfsec.sarif          
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v1
@@ -34,3 +34,5 @@ jobs:
           # Path to SARIF file relative to the root of the repository
           sarif_file: tfsec.sarif         
 ```
+
+The `tfsec/tfsec-sarif-action` optionally takes a `config_file` argument to specify the path to a `tfsec` config file that you wish to be run in during the action.
