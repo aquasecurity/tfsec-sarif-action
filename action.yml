@@ -17,6 +17,11 @@ inputs:
     default: latest
   config_file:
     description: The path to the config file. (eg. ./tfsec.yml)
+  tfsec_args:
+    description: | 
+      Space seperated args specified here will be added during tfsec execution.
+      (eg. --force-all-dirs --verbose)
+
 outputs:
   tfsec-return-code:
     description: 'tfsec command return code'
