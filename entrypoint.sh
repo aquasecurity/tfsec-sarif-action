@@ -25,9 +25,14 @@ if [ -n "${INPUT_CONFIG_FILE}" ]; then
   CONFIG_FILE_OPTION="--config-file ${INPUT_CONFIG_FILE}"
 fi
 
+if [ -n "${INPUT_TFSEC_ARGS}" ]; then
+  echo "::debug::Using specified args: ${INPUT_TFSEC_ARGS}"
+  TFSEC_ARGS_OPTION="${INPUT_TFSEC_ARGS}"
+fi
+
 echo {} >${INPUT_SARIF_FILE}
 
-tfsec --format=sarif "${INPUT_WORKING_DIRECTORY}" ${CONFIG_FILE_OPTION} ${TFVARS_OPTION} >${INPUT_SARIF_FILE}
+tfsec --format=sarif "${INPUT_WORKING_DIRECTORY}" ${CONFIG_FILE_OPTION} ${TFVARS_OPTION} ${TFSEC_ARGS_OPTION} >${INPUT_SARIF_FILE}
 
 tfsec_return="${PIPESTATUS[0]}" exit_code=$?
 
