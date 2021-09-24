@@ -1,7 +1,6 @@
-FROM alpine:3.12
+FROM alpine:3.14
 
-RUN apk --no-cache --update add bash git \
-    && rm -rf /var/cache/apk/*
+RUN apk --no-cache --update add bash
 
 SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
 
