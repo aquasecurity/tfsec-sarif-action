@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: tfsec
-        uses: tfsec/tfsec-sarif-action@master
+        uses: aquasecurity/tfsec-sarif-action@master
         with:
           sarif_file: tfsec.sarif          
 
