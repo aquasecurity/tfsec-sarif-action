@@ -1,4 +1,3 @@
-[![GitHub All Releases](https://img.shields.io/github/downloads/tfsec/tfsec-sarif-action/total)](https://github.com/tfsec/tfsec-sarif-action/releases)
 # tfsec-sarif-action
 
 ## Description
