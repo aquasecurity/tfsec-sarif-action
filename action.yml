@@ -1,33 +1,43 @@
-name: 'Run tfsec with sarif upload'
-description: 'Run tfsec against terraform code base and upload the sarif output to the github repo'
-author: 'Owen Rumney'
+name: "Run tfsec with sarif upload"
+description: "Run tfsec against terraform code base and upload the sarif output to the github repo"
+author: "Owen Rumney"
 
 inputs:
   working_directory:
     description: |
       Directory to run the action on, from the repo root.
       Default is . ( root of the repository)
-    default: '.'
+    default: "."
+    required: false
   sarif_file:
     description: The path to write the sarif report, defaults to tfsec.sarif
+    default: tfsec.sarif
+    required: false
   tfvars_file:
     description: The tfvars file to use for the scan
+    required: false
   tfsec_version:
     description: The version of tfsec to use for the scan, defaults to latest
     default: latest
+    required: false
   config_file:
     description: The path to the config file. (eg. ./tfsec.yml)
+    required: false
   tfsec_args:
-    description: | 
+    description: |
       Space seperated args specified here will be added during tfsec execution.
-      (eg. --force-all-dirs --verbose)
+      (eg. --verbose)
+    required: false
+  full_repo_scan:
+    description: Scan the entire repository for Terraform issues
+    required: false
 
 outputs:
   tfsec-return-code:
-    description: 'tfsec command return code'
+    description: "tfsec command return code"
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
 branding:
-  icon: 'search'
-  color: 'gray-dark'
+  icon: "search"
+  color: "gray-dark"
