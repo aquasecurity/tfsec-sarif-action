@@ -35,4 +35,15 @@ jobs:
           sarif_file: tfsec.sarif         
 ```
 
-The `tfsec/tfsec-sarif-action` optionally takes a `config_file` argument to specify the path to a `tfsec` config file that you wish to be run in during the action.
+## Optional inputs
+There are a number of optional inputs that can be used in the `with:` block.
+
+**working_directory** - the directory to scan in, defaults to `.`, ie current working directory
+
+**tfsec_version** - the version of tfsec to use, defaults to `latest`
+
+**tfsec_args** - the args for tfsec to use (space-separated)
+
+**config_file** - The path to the config file. (eg. ./tfsec.yml)
+
+**full_repo_scan** - This is the equivalent of running `--force-all-dirs` and will ensure that a Terraform in the repo will be scanned
