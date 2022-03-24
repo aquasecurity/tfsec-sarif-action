@@ -35,7 +35,7 @@ fi
 
 echo {} >${INPUT_SARIF_FILE}
 
-tfsec --soft-fail --format=sarif "${INPUT_WORKING_DIRECTORY}" ${CONFIG_FILE_OPTION} ${TFVARS_OPTION} ${TFSEC_ARGS_OPTION} >${INPUT_SARIF_FILE}
+tfsec --soft-fail --force-all-dirs --format=sarif "${INPUT_WORKING_DIRECTORY}" ${CONFIG_FILE_OPTION} ${TFVARS_OPTION} ${TFSEC_ARGS_OPTION} >${INPUT_SARIF_FILE}
 
 tfsec_return="${PIPESTATUS[0]}" exit_code=$?
 
