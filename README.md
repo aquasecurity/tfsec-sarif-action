@@ -17,10 +17,15 @@ jobs:
   tfsec:
     name: tfsec sarif report
     runs-on: ubuntu-latest
-
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
     steps:
       - name: Clone repo
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
 
       - name: tfsec
         uses: aquasecurity/tfsec-sarif-action@v0.1.0
