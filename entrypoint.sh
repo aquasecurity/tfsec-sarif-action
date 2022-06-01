@@ -6,7 +6,7 @@ if [ -n "${GITHUB_WORKSPACE}" ]; then
   cd "${GITHUB_WORKSPACE}" || exit
 fi
 
-TFSEC_VERSION=""
+TFSEC_VERSION="latest"
 if [ "$INPUT_TFSEC_VERSION" != "latest" ]; then
   TFSEC_VERSION="tags/${INPUT_TFSEC_VERSION}"
 fi
