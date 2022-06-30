@@ -1,5 +1,4 @@
 FROM alpine:latest
-ARG TARGETPLATFORM
 
 RUN apk --no-cache --update add bash
 
