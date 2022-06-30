@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -xe
 
 # Check for a github workkspace, exit if not found
