@@ -28,7 +28,7 @@ wget -O - -q "$(wget -q https://api.github.com/repos/aquasecurity/tfsec/releases
 wget -O - -q "$(wget -q https://api.github.com/repos/aquasecurity/tfsec/releases/${TFSEC_VERSION} -O - | grep -m 1 -o -E "https://.+?tfsec_checksums.txt" | head -n1)" > tfsec.checksums
 
 # pipe out the checksum and validate
-grep "tfsec-linux-${ARCH}" tfsec.checksums > tfsec-linux-amd64.checksum
+grep "tfsec-linux-${ARCH}" tfsec.checksums > "tfsec-linux-${ARCH}.checksum"
 sha256sum -c "tfsec-linux-${ARCH}.checksum"
 install "tfsec-linux-${ARCH}" /usr/local/bin/tfsec
 
