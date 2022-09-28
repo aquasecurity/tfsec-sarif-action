@@ -36,6 +36,12 @@ if [ -n "${INPUT_CONFIG_FILE}" ]; then
   CONFIG_FILE_OPTION="--config-file ${INPUT_CONFIG_FILE}"
 fi
 
+# if config file passed, add config to the arguments 
+if [ -n "${INPUT_CUSTOM_CHECK_DIR}" ]; then
+  echo "Using custom check directory ${INPUT_CUSTOM_CHECK_DIR}"
+  CUSTOM_CHECK_DIR_OPTION="--custom-check-dir ${INPUT_CUSTOM_CHECK_DIR}"
+fi
+
 # if any additional args included, add them on
 if [ -n "${INPUT_TFSEC_ARGS}" ]; then
   echo "Using specified args: ${INPUT_TFSEC_ARGS}"
@@ -52,7 +58,7 @@ fi
 # prime the sarif file with empty results
 echo {} > ${INPUT_SARIF_FILE}
 
-tfsec --soft-fail --out=${INPUT_SARIF_FILE} --format=sarif ${TFSEC_ARGS_OPTION} ${CONFIG_FILE_OPTION} ${TFVARS_OPTION} "${INPUT_WORKING_DIRECTORY}" 
+tfsec --soft-fail --out=${INPUT_SARIF_FILE} --format=sarif ${TFSEC_ARGS_OPTION} ${CONFIG_FILE_OPTION} ${CUSTOM_CHECK_DIR_OPTION} ${TFVARS_OPTION} "${INPUT_WORKING_DIRECTORY}" 
 
 tfsec_return="${PIPESTATUS[0]}" exit_code=$?
 

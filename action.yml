@@ -23,6 +23,9 @@ inputs:
   config_file:
     description: The path to the config file. (eg. ./tfsec.yml)
     required: false
+  custom_check_dir:
+    description: The path to the directory containing custom checks. (eg. `./tfsec-custom`)
+    required: false
   tfsec_args:
     description: |
       Space seperated args specified here will be added during tfsec execution.

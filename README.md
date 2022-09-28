@@ -48,6 +48,8 @@ There are a number of optional inputs that can be used in the `with:` block.
 
 **tfsec_args** - the args for tfsec to use (space-separated)
 
-**config_file** - The path to the config file. (eg. ./tfsec.yml)
+**config_file** - The path to the config file. (eg. `./tfsec.yml`)
+
+**custom_check_dir** - The path to the directory containing custom checks. (eg. `./tfsec-custom`)
 
 **full_repo_scan** - This is the equivalent of running `--force-all-dirs` and will ensure that a Terraform in the repo will be scanned
