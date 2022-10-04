@@ -1,6 +1,6 @@
 FROM alpine:3.15.2
 
-RUN apk --no-cache --update add bash
+RUN apk --no-cache --update add bash git mercurial
 
 SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
 
