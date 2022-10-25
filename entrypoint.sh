@@ -10,7 +10,7 @@ fi
 # default to latest
 TFSEC_VERSION="latest"
 
-# if INPUT_TFSEC_VERSION set and not latests
+# if INPUT_TFSEC_VERSION set and not latest
 if [[ -n "${INPUT_TFSEC_VERSION}" && "$INPUT_TFSEC_VERSION" != "latest" ]]; then
   TFSEC_VERSION="tags/${INPUT_TFSEC_VERSION}"
 fi
