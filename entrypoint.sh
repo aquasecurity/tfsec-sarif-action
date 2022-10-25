@@ -16,8 +16,8 @@ if [ -n "${INPUT_TFSEC_VERSION}" && "$INPUT_TFSEC_VERSION" != "latest" ]; then
 fi
 
 # Pull https://api.github.com/repos/aquasecurity/tfsec/releases for the full list of releases. NOTE no trailing slash
-wget -O - -q "$(wget -q https://api.github.com/repos/aquasecurity/tfsec/releases/${TFSEC_VERSION} -O - | grep -m 1 -o -E "https://.+?tfsec-linux-amd64" | head -n1)" > tfsec-linux-amd64
-wget -O - -q "$(wget -q https://api.github.com/repos/aquasecurity/tfsec/releases/${TFSEC_VERSION} -O - | grep -m 1 -o -E "https://.+?tfsec_checksums.txt" | head -n1)" > tfsec.checksums
+wget --inet4-only -O - -q "$(wget -q https://api.github.com/repos/aquasecurity/tfsec/releases/${TFSEC_VERSION} -O - | grep -m 1 -o -E "https://.+?tfsec-linux-amd64" | head -n1)" > tfsec-linux-amd64
+wget --inet4-only -O - -q "$(wget -q https://api.github.com/repos/aquasecurity/tfsec/releases/${TFSEC_VERSION} -O - | grep -m 1 -o -E "https://.+?tfsec_checksums.txt" | head -n1)" > tfsec.checksums
 
 # pipe out the checksum and validate
 grep tfsec-linux-amd64 tfsec.checksums > tfsec-linux-amd64.checksum
