@@ -30,7 +30,7 @@ if [ -n "${INPUT_TFVARS_FILE}" ]; then
   TFVARS_OPTION="--tfvars-file ${INPUT_TFVARS_FILE}"
 fi
 
-# if config file passed, add config to the arguments 
+# if config file passed, add config to the arguments
 if [ -n "${INPUT_CONFIG_FILE}" ]; then
   echo "Using config file ${INPUT_CONFIG_FILE}"
   CONFIG_FILE_OPTION="--config-file ${INPUT_CONFIG_FILE}"
@@ -52,8 +52,8 @@ fi
 # prime the sarif file with empty results
 echo {} > ${INPUT_SARIF_FILE}
 
-tfsec --soft-fail --out=${INPUT_SARIF_FILE} --format=sarif ${TFSEC_ARGS_OPTION} ${CONFIG_FILE_OPTION} ${TFVARS_OPTION} "${INPUT_WORKING_DIRECTORY}" 
+tfsec --soft-fail --out=${INPUT_SARIF_FILE} --format=sarif ${TFSEC_ARGS_OPTION} ${CONFIG_FILE_OPTION} ${TFVARS_OPTION} "${INPUT_WORKING_DIRECTORY}"
 
 tfsec_return="${PIPESTATUS[0]}" exit_code=$?
 
-echo ::set-output name=tfsec-return-code::"${tfsec_return}"
+echo "tfsec-return-code=${tfsec_return}" >> $GITHUB_OUTPUT
