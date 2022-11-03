@@ -15,14 +15,14 @@ if [[ -n "${INPUT_TFSEC_VERSION}" && "$INPUT_TFSEC_VERSION" != "latest" ]]; then
   TFSEC_VERSION="tags/${INPUT_TFSEC_VERSION}"
 fi
 
-# Pull https://api.github.com/repos/aquasecurity/tfsec/releases for the full list of releases. NOTE no trailing slash
-wget -O - -q "$(wget -q https://api.github.com/repos/aquasecurity/tfsec/releases/${TFSEC_VERSION} -O - | grep -m 1 -o -E "https://.+?tfsec-linux-amd64" | head -n1)" > tfsec-linux-amd64
-wget -O - -q "$(wget -q https://api.github.com/repos/aquasecurity/tfsec/releases/${TFSEC_VERSION} -O - | grep -m 1 -o -E "https://.+?tfsec_checksums.txt" | head -n1)" > tfsec.checksums
+# # Pull https://api.github.com/repos/aquasecurity/tfsec/releases for the full list of releases. NOTE no trailing slash
+# wget --inet4-only -O - -q "$(wget --inet4-only -q https://api.github.com/repos/aquasecurity/tfsec/releases/${TFSEC_VERSION} -O - | grep -m 1 -o -E "https://.+?tfsec-linux-amd64" | head -n1)" > tfsec-linux-amd64
+# wget --inet4-only -O - -q "$(wget --inet4-only -q https://api.github.com/repos/aquasecurity/tfsec/releases/${TFSEC_VERSION} -O - | grep -m 1 -o -E "https://.+?tfsec_checksums.txt" | head -n1)" > tfsec.checksums
 
-# pipe out the checksum and validate
-grep tfsec-linux-amd64 tfsec.checksums > tfsec-linux-amd64.checksum
-sha256sum -c tfsec-linux-amd64.checksum
-install tfsec-linux-amd64 /usr/local/bin/tfsec
+# # pipe out the checksum and validate
+# grep tfsec-linux-amd64 tfsec.checksums > tfsec-linux-amd64.checksum
+# sha256sum -c tfsec-linux-amd64.checksum
+# install tfsec-linux-amd64 /usr/local/bin/tfsec
 
 # if input vars file then add to arguments
 if [ -n "${INPUT_TFVARS_FILE}" ]; then
