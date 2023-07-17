@@ -28,12 +28,12 @@ jobs:
           persist-credentials: false
 
       - name: tfsec
-        uses: aquasecurity/tfsec-sarif-action@v0.1.0
+        uses: aquasecurity/tfsec-sarif-action@v0.1.4
         with:
           sarif_file: tfsec.sarif          
 
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v1
+        uses: github/codeql-action/upload-sarif@v2
         with:
           # Path to SARIF file relative to the root of the repository
           sarif_file: tfsec.sarif         
